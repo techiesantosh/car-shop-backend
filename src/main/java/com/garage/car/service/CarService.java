@@ -16,12 +16,15 @@ public class CarService {
     @Autowired
     private WarehouseRepository warehouseRepository;
 
+    /**
+     * Gets all the cars from the warehouse
+     * @return list of cars
+     */
     public List<Vehicle> getcars() {
 
         List<Warehouse> warehouses = warehouseRepository.findAll();
-        List<Vehicle> vehicles = new ArrayList<>();
 
-       vehicles= warehouses.stream()
+        List<Vehicle> vehicles = warehouses.stream()
                 .flatMap(a-> a.getCars().getVehicles().stream())
                 .collect(Collectors.toList());
        return vehicles;
