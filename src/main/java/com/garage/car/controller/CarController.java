@@ -1,11 +1,13 @@
 package com.garage.car.controller;
 
+import com.garage.car.model.CarDetails;
 import com.garage.car.model.Vehicle;
 import com.garage.car.service.CarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +25,8 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    /** Returns all cars in the warehouse
+    /**
+     * Returns all cars in the warehouse
      *
      * @return list of cars
      */
@@ -32,5 +35,16 @@ public class CarController {
         return carService.getcars();
     }
 
+
+    /**
+     * Returns Details of the car
+     *
+     * @return CarDetails
+     */
+    @RequestMapping(value = "/cars/{id}/details", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public CarDetails getCarDetails(@PathVariable int id) {
+        LOG.debug("Car ID={}",id );
+        return carService.getCarDetails(id);
+    }
 
 }

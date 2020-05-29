@@ -4,23 +4,22 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-
 @Document(collection = "warehouse")
 public class Warehouse {
 
     @Id
-    public String id;
+    public int id;
 
     public String name;
     public Location location;
 
-    public Car cars ;
+    public Car cars;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

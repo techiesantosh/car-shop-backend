@@ -16,4 +16,11 @@ public class ExceptionHandlingController {
 
         return new ResponseEntity<ErrorDetails>(response, HttpStatus.SERVICE_UNAVAILABLE);
     }
+
+    @ExceptionHandler(CarNotFoundException.class)
+    public ResponseEntity<ErrorDetails> invalidTask(CarNotFoundException ex) {
+        ErrorDetails response = new ErrorDetails(new Date(), "Invalid carId", ex.getMessage());
+
+        return new ResponseEntity<ErrorDetails>(response, HttpStatus.BAD_REQUEST);
+    }
 }

@@ -1,5 +1,6 @@
 package com.garage.car.service;
 
+import com.garage.car.model.CarDetails;
 import com.garage.car.model.Vehicle;
 import com.garage.car.repo.WarehouseRepository;
 import com.garage.car.util.WarehouseStubDataProvider;
@@ -34,12 +35,12 @@ class CarServiceTest {
     @BeforeEach
     public void setUp() {
 
-        Mockito.when(warehouseRepository.findAll()).thenReturn(WarehouseStubDataProvider.getWarehouses());
 
     }
 
     @Test
     public void getCars() {
+        Mockito.when(warehouseRepository.findAll()).thenReturn(WarehouseStubDataProvider.getWarehouses());
 
         final List<Vehicle> vehicleList = carService.getcars();
 
@@ -53,5 +54,16 @@ class CarServiceTest {
         assertThat(vehicleList.get(1), hasProperty("price", equalTo(527.25)));
     }
 
+    @Test
+    public void getCarDetails() {
+        Mockito.when(warehouseRepository.findCarDetailsById(1)).thenReturn(WarehouseStubDataProvider.getWarehouses().get(0));
+
+        final CarDetails carDetails = carService.getCarDetails(1);
+
+        assertThat(carDetails, notNullValue());
+        assertThat(carDetails.getLocation(), is("West wing"));
+        assertThat(carDetails.getWarehouseName(), is("Warehouse A"));
+
+    }
 
 }

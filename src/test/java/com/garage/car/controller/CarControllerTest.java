@@ -28,7 +28,7 @@ public class CarControllerTest {
     private CarService carService;
 
     @Test
-    public void getTasks() throws Exception {
+    public void getCars() throws Exception {
         when(carService.getcars()).thenReturn(WarehouseStubDataProvider.getVehicles());
         this.mockMvc.perform(get("/cars")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
@@ -47,6 +47,18 @@ public class CarControllerTest {
                 .andExpect(jsonPath("$[1].dateadded", is("2018-09-18")));
 
 
+
+    }
+
+    @Test
+    public void getCarsDetails() throws Exception {
+        when(carService.getCarDetails(1)).thenReturn(WarehouseStubDataProvider.getCarDetails(1));
+        this.mockMvc.perform(get("/cars/1/details")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.location", is("West Wing")))
+                .andExpect(jsonPath("$.warehouseName", is("Warehouse A")));
 
     }
 

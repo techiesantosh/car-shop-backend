@@ -8,7 +8,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@SpringBootApplication(scanBasePackages ="com.garage")
+@SpringBootApplication(scanBasePackages = "com.garage")
 public class GarageApplication {
 
     @Autowired

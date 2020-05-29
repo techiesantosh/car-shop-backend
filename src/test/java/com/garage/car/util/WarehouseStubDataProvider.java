@@ -1,9 +1,6 @@
 package com.garage.car.util;
 
-import com.garage.car.model.Car;
-import com.garage.car.model.Location;
-import com.garage.car.model.Vehicle;
-import com.garage.car.model.Warehouse;
+import com.garage.car.model.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,7 +11,7 @@ public class WarehouseStubDataProvider {
     public static List<Warehouse> getWarehouses() {
 
         Warehouse warehouse = new Warehouse();
-        warehouse.setId("1");
+        warehouse.setId(1);
         warehouse.setName("Warehouse A");
         Car car = new Car();
         car.setLocation("West wing");
@@ -22,7 +19,7 @@ public class WarehouseStubDataProvider {
         location.setLatitude("47.13111");
         location.setLongitude("-61.54801");
         Vehicle vehicle = new Vehicle();
-        vehicle.setId("1");
+        vehicle.setId(1);
         vehicle.setLicensed(true);
         vehicle.setMake("Volkswagen");
         vehicle.setModel("Jetta III");
@@ -34,7 +31,7 @@ public class WarehouseStubDataProvider {
         warehouse.setLocation(location);
 
         Warehouse warehouse1 = new Warehouse();
-        warehouse1.setId("2");
+        warehouse1.setId(2);
         warehouse1.setName("Warehouse B");
         Car car1 = new Car();
         car1.setLocation("East wing");
@@ -42,7 +39,7 @@ public class WarehouseStubDataProvider {
         location1.setLatitude("48.13111");
         location1.setLongitude("-81.54801");
         Vehicle vehicle1 = new Vehicle();
-        vehicle1.setId("2");
+        vehicle1.setId(2);
         vehicle1.setLicensed(false);
         vehicle1.setMake("Ford");
         vehicle1.setModel("Expedition EL");
@@ -61,7 +58,7 @@ public class WarehouseStubDataProvider {
 
     public  static  List<Vehicle> getVehicles(){
         Vehicle vehicle = new Vehicle();
-        vehicle.setId("1");
+        vehicle.setId(1);
         vehicle.setLicensed(true);
         vehicle.setMake("Volkswagen");
         vehicle.setModel("Jetta III");
@@ -69,7 +66,7 @@ public class WarehouseStubDataProvider {
         vehicle.setDateadded("2018-09-18");
 
         Vehicle vehicle1 = new Vehicle();
-        vehicle1.setId("2");
+        vehicle1.setId(2);
         vehicle1.setLicensed(false);
         vehicle1.setMake("Ford");
         vehicle1.setModel("Expedition EL");
@@ -80,6 +77,27 @@ public class WarehouseStubDataProvider {
         vehicles.add(vehicle);
         vehicles.add(vehicle1);
         return  vehicles;
+
+    }
+    public static CarDetails getCarDetails(int carId){
+        CarDetails carDetails = new CarDetails();
+
+        switch (carId){
+
+            case 1:
+                carDetails.setWarehouseName("Warehouse A");
+                carDetails.setLocation("West Wing");
+                break;
+
+            case 2:
+                carDetails.setWarehouseName("Warehouse B");
+                carDetails.setLocation("East Wing");
+                break;
+
+
+        }
+
+        return carDetails;
 
     }
 }
