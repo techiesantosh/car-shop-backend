@@ -21,6 +21,6 @@ public class ExceptionHandlingController {
     public ResponseEntity<ErrorDetails> invalidTask(CarNotFoundException ex) {
         ErrorDetails response = new ErrorDetails(new Date(), "Invalid carId", ex.getMessage());
 
-        return new ResponseEntity<ErrorDetails>(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<ErrorDetails>(response, HttpStatus.NOT_FOUND);
     }
 }
